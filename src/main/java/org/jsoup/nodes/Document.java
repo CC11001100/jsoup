@@ -16,6 +16,7 @@ import java.util.List;
 
  @author Jonathan Hedley, jonathan@hedley.net */
 public class Document extends Element {
+
     private OutputSettings outputSettings = new OutputSettings();
     private QuirksMode quirksMode = QuirksMode.noQuirks;
     private String location;
@@ -364,6 +365,7 @@ public class Document extends Element {
      * A Document's output settings control the form of the text() and html() methods.
      */
     public static class OutputSettings implements Cloneable {
+
         /**
          * The output serialization syntax.
          */

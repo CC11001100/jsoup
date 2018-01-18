@@ -5,6 +5,7 @@ import org.jsoup.helper.Validate;
 import java.util.List;
 
 abstract class LeafNode extends Node {
+
     Object value; // either a string value, or an attribute map (in the rare case multiple attributes are set)
 
     protected final boolean hasAttributes() {

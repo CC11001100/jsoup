@@ -7,6 +7,11 @@ import java.util.Locale;
  */
 public final class Normalizer {
 
+    /**
+     * 防空的，传入null会被转化为空串
+     * @param input
+     * @return
+     */
     public static String lowerCase(final String input) {
         return input != null ? input.toLowerCase(Locale.ENGLISH) : "";
     }

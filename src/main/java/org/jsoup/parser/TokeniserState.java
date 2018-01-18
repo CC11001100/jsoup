@@ -6,6 +6,7 @@ import org.jsoup.nodes.DocumentType;
  * States and transition activations for the Tokeniser.
  */
 enum TokeniserState {
+
     Data {
         // in data state, gather characters until a character reference or tag is found
         void read(Tokeniser t, CharacterReader r) {
@@ -30,12 +31,14 @@ enum TokeniserState {
             }
         }
     },
+
     CharacterReferenceInData {
         // from & in data
         void read(Tokeniser t, CharacterReader r) {
             readCharRef(t, Data);
         }
     },
+
     Rcdata {
         /// handles data in title, textarea etc
         void read(Tokeniser t, CharacterReader r) {
@@ -61,21 +64,25 @@ enum TokeniserState {
             }
         }
     },
+
     CharacterReferenceInRcdata {
         void read(Tokeniser t, CharacterReader r) {
             readCharRef(t, Rcdata);
         }
     },
+
     Rawtext {
         void read(Tokeniser t, CharacterReader r) {
             readData(t, r, this, RawtextLessthanSign);
         }
     },
+
     ScriptData {
         void read(Tokeniser t, CharacterReader r) {
             readData(t, r, this, ScriptDataLessthanSign);
         }
     },
+
     PLAINTEXT {
         void read(Tokeniser t, CharacterReader r) {
             switch (r.current()) {
@@ -94,6 +101,7 @@ enum TokeniserState {
             }
         }
     },
+
     TagOpen {
         // from < in data
         void read(Tokeniser t, CharacterReader r) {
@@ -120,6 +128,7 @@ enum TokeniserState {
             }
         }
     },
+
     EndTagOpen {
         void read(Tokeniser t, CharacterReader r) {
             if (r.isEmpty()) {

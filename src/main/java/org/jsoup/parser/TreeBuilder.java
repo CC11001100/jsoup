@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Jonathan Hedley
  */
 abstract class TreeBuilder {
+
     CharacterReader reader;
     Tokeniser tokeniser;
     protected Document doc; // current doc we are building into
@@ -82,9 +83,9 @@ abstract class TreeBuilder {
         return process(end.reset().name(name));
     }
 
-
     protected Element currentElement() {
         int size = stack.size();
         return size > 0 ? stack.get(size-1) : null;
     }
+
 }

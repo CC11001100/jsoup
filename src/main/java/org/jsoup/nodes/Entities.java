@@ -15,10 +15,11 @@ import static org.jsoup.nodes.Entities.EscapeMode.base;
 import static org.jsoup.nodes.Entities.EscapeMode.extended;
 
 /**
- * HTML entities, and escape routines. Source: <a href="http://www.w3.org/TR/html5/named-character-references.html#named-character-references">W3C
- * HTML named character references</a>.
+ * HTML entities, and escape routines.
+ * Source: <a href="http://www.w3.org/TR/html5/named-character-references.html#named-character-references">W3CHTML named character references</a>.
  */
 public class Entities {
+
     private static final int empty = -1;
     private static final String emptyName = "";
     static final int codepointRadix = 36;

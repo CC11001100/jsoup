@@ -15,6 +15,7 @@ import java.util.List;
  * form to easily be submitted.
  */
 public class FormElement extends Element {
+
     private final Elements elements = new Elements();
 
     /**
@@ -62,6 +63,7 @@ public class FormElement extends Element {
     public Connection submit() {
         String action = hasAttr("action") ? absUrl("action") : baseUri();
         Validate.notEmpty(action, "Could not determine a form action URL for submit. Ensure you set a base URI when parsing.");
+        // 虽然这里不存在的情况下回返回空串，但是equals还是应该尽量将字面值常量放在前面吧...
         Connection.Method method = attr("method").toUpperCase().equals("POST") ?
                 Connection.Method.POST : Connection.Method.GET;
 

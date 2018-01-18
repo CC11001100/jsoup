@@ -20,6 +20,7 @@ import java.util.List;
 
  @author Jonathan Hedley, jonathan@hedley.net */
 public class Elements extends ArrayList<Element> {
+
     public Elements() {
     }
 

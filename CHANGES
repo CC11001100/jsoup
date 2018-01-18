@@ -85,7 +85,7 @@ jsoup changelog
     LinkedHashSet.
     <https://github.com/jhy/jsoup/issues/911>
 
-  * Added support for Element.selectFirst(query), to efficiently find the first matching element.
+  * Added support for Element.selectFirst(cssQuery), to efficiently find the first matching element.
 
   * Added Element.appendTo(parent) to simplify slinging elements about.
     <https://github.com/jhy/jsoup/pull/662>
@@ -164,7 +164,7 @@ jsoup changelog
   * Bugfix: Element.hasClass() and the ".classname" selector would not find the class attribute case-insensitively.
     <https://github.com/jhy/jsoup/issues/814>
 
-  * Bugfix: In Jsoup.Connection, if a redirect contained a query string with %xx escapes, they would be double escaped
+  * Bugfix: In Jsoup.Connection, if a redirect contained a cssQuery string with %xx escapes, they would be double escaped
     before the redirect was followed, leading to fetching an incorrect location.
 
   * Bugfix: In Jsoup.Connection, if a request body was set and the connection was redirected, the body would incorrectly
@@ -191,9 +191,9 @@ jsoup changelog
  * Improved startup time, particularly on Android, by reducing garbage generation and CPU execution time when loading
    the HTML entity files. About 1.72x faster in this area.
 
- * Added Element.is(query) to check if an element matches this CSS query.
+ * Added Element.is(cssQuery) to check if an element matches this CSS cssQuery.
 
- * Added new methods to Elements: next(query), nextAll(query), prev(query), prevAll(query) to select next and previous
+ * Added new methods to Elements: next(cssQuery), nextAll(cssQuery), prev(cssQuery), prevAll(cssQuery) to select next and previous
    element siblings from a current selection, with optional selectors.
 
  * Added Node.root() to get the topmost ancestor of a Node.
@@ -326,7 +326,7 @@ jsoup changelog
  * Fixed an issue in the Parent selector where it would not match against the root element it was applied to.
    <https://github.com/jhy/jsoup/pull/619>
 
- * Fix an issue where elements.select(query) would not return every matching element if they had the same content.
+ * Fix an issue where elements.select(cssQuery) would not return every matching element if they had the same content.
    <https://github.com/jhy/jsoup/issues/614>
 
  * Added not-null validators to Element.appendText() and Element.prependText()
@@ -856,7 +856,7 @@ jsoup changelog
 
  * Fixed support for HTML entities with numbers in name (e.g. &frac34, &sup1).
 
- * Fixed absolute URL generation from relative URLs which are only query strings.
+ * Fixed absolute URL generation from relative URLs which are only cssQuery strings.
 
 *** Release 1.3.3 [2010-Sep-19]
  * Implemented Elements.empty() and Elements.remove(). This allows easy element removal, like:
@@ -905,7 +905,7 @@ jsoup changelog
 
  * Added support for HTML5 dataset custom data attributes, with the Element.dataset() map.
 
- * Added support for the [^attributePrefix] selector query, to find elements with attributes starting with a prefix.
+ * Added support for the [^attributePrefix] selector cssQuery, to find elements with attributes starting with a prefix.
    Useful for finding elements with datasets: [^data-] matches <p data-name="jsoup">
 
  * Added support for namespaced elements (<fb:name>) and selectors to find them (fb|name)
@@ -935,7 +935,7 @@ jsoup changelog
  
  * Added support for [key~=regex] attribute selector, to find elements with attribute values matching regular expression
 
- * Upgraded the selector query parser to allow nested selectors like 'div:has(p:matches(regex))'
+ * Upgraded the selector cssQuery parser to allow nested selectors like 'div:has(p:matches(regex))'
 
 *** Release 1.2.1 [2010-Jun-21]
  * Added .before(html) and .after(html) methods to Element and Elements, to insert sibling HTML
@@ -982,7 +982,7 @@ jsoup changelog
     output and to verify safe protocol. (Were previously discarded.)
       <http://github.com/jhy/jsoup/issues/issue/12>
  
- * Allow combinators at start of selector query, for query refinements
+ * Allow combinators at start of selector cssQuery, for cssQuery refinements
  	  <http://github.com/jhy/jsoup/issues/issue/13>
 
  * Added Element#val() and #val(String) methods, for form values

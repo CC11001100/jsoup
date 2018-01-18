@@ -16,6 +16,7 @@ import java.util.*;
 
  @author Jonathan Hedley, jonathan@hedley.net */
 public abstract class Node implements Cloneable {
+
     static final String EmptyString = "";
     Node parentNode;
     int siblingIndex;
@@ -635,7 +636,8 @@ public abstract class Node implements Cloneable {
 
     /**
      * Create a stand-alone, deep copy of this node, and all of its children. The cloned node will have no siblings or
-     * parent node. As a stand-alone object, any changes made to the clone or any of its children will not impact the
+     * parent node(也就是说可以有它指向的，但是不能有指向它的).
+     * As a stand-alone object, any changes made to the clone or any of its children will not impact the
      * original node.
      * <p>
      * The cloned node may be adopted into another Document or node structure using {@link Element#appendChild(Node)}.
@@ -695,6 +697,7 @@ public abstract class Node implements Cloneable {
     }
 
     private static class OuterHtmlVisitor implements NodeVisitor {
+
         private Appendable accum;
         private Document.OutputSettings out;
 
@@ -722,4 +725,5 @@ public abstract class Node implements Cloneable {
             }
         }
     }
+
 }

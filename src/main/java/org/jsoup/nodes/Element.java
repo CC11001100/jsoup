@@ -38,6 +38,7 @@ import static org.jsoup.internal.Normalizer.normalize;
  * @author Jonathan Hedley, jonathan@hedley.net
  */
 public class Element extends Node {
+
     private static final List<Node> EMPTY_NODES = Collections.emptyList();
     private static final Pattern classSplit = Pattern.compile("\\s+");
     private Tag tag;
@@ -1074,6 +1075,9 @@ public class Element extends Node {
     }
 
     /**
+     *
+     *  啊哈，原来这个方法可以只选中当前节点的文本，这样根本就不用专门去移除什么的啦
+     *
      * Gets the text owned by this element only; does not get the combined text of all children.
      * <p>
      * For example, given HTML {@code <p>Hello <b>there</b> now!</p>}, {@code p.ownText()} returns {@code "Hello now!"},

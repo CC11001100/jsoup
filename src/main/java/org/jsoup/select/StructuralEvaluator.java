@@ -6,6 +6,7 @@ import org.jsoup.nodes.Element;
  * Base structural evaluator.
  */
 abstract class StructuralEvaluator extends Evaluator {
+
     Evaluator evaluator;
 
     static class Root extends Evaluator {

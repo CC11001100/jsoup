@@ -19,13 +19,19 @@ import static org.jsoup.internal.Normalizer.normalize;
 
 
 /**
+ *
+ *  这个类主要是将各种选择器落地执行的
+ *
  * Evaluates that an element matches the selector.
  */
 public abstract class Evaluator {
+
     protected Evaluator() {
     }
 
     /**
+	 * 这个方法用来判断element是否能在一颗DOM树上选中
+	 *
      * Test if the element meets the evaluator's requirements.
      *
      * @param root    Root of the matching subtree
@@ -36,9 +42,12 @@ public abstract class Evaluator {
     public abstract boolean matches(Element root, Element element);
 
     /**
+	 * 标签名选择器
+	 *
      * Evaluator for tag name
      */
     public static final class Tag extends Evaluator {
+
         private String tagName;
 
         public Tag(String tagName) {
@@ -55,7 +64,6 @@ public abstract class Evaluator {
             return String.format("%s", tagName);
         }
     }
-
 
     /**
      * Evaluator for tag name that ends with
@@ -757,8 +765,9 @@ public abstract class Evaluator {
 
         @Override
         public boolean matches(Element root, Element element) {
-            if (element instanceof PseudoTextElement)
-                return true;
+            if (element instanceof PseudoTextElement) {
+				return true;
+			}
 
             List<TextNode> textNodes = element.textNodes();
             for (TextNode textNode : textNodes) {

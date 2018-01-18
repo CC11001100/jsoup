@@ -11,6 +11,7 @@ import java.util.Map;
  A single key + value attribute. (Only used for presentation.)
  */
 public class Attribute implements Map.Entry<String, String>, Cloneable  {
+
     private static final String[] booleanAttributes = {
             "allowfullscreen", "async", "autofocus", "checked", "compact", "declare", "default", "defer", "disabled",
             "formnovalidate", "hidden", "inert", "ismap", "itemscope", "multiple", "muted", "nohref", "noresize",

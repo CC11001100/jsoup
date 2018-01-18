@@ -11,6 +11,7 @@ import org.jsoup.nodes.Node;
  * </p>
  */
 public interface NodeVisitor {
+
     /**
      * Callback for when a node is first visited.
      *
@@ -28,4 +29,5 @@ public interface NodeVisitor {
      * of that will have depth 1.
      */
     void tail(Node node, int depth);
+
 }

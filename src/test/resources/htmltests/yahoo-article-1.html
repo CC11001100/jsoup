@@ -61,7 +61,7 @@ YAHOO.one.uh.popularSearches = function(data) {
     }
     var e = document.getElementById("ygmapromo") || document.getElementById("ygmabtpromo");
     var e2 = document.getElementById("ygmapromo-i");
-    var i = data.query.results.links; 
+    var i = data.cssQuery.results.links;
     var hd = i.text;
     var fr = "&fr=ush-tts&fr2=ps";
     e2.innerHTML = '<a href="http://us.ard.yahoo.com/SIG=15r1vctu9/M=650008.13959238.14033549.12832737/D=news/S=2023881070:HPRM2/Y=YAHOO/EXP=1283302646/L=PENKT2KIKjz0U5Bi.EoomABspUVaCEx9iNYABtx_/B=CmJLBkoGYmQ-/J=1283295446553092/K=U7.lJSeRx2ofwgoGAUPgCQ/A=6076890/R=0;_ylt=A2KIKvTWiH1Ml3sBowJu.aF4;_ylu=X3oDMTExOHVpaGkwBHBvcwM0BHNlYwNoZWFkZXIEc2xrA3RyZW5kaW5nY2hvcA--/*'+i.href+fr+'" id="ygma-s-h">Trending: '+chop(hd, 20)+'</a>';
@@ -81,10 +81,10 @@ else {
 var y = document.getElementById("ygma") || document.getElementById("ygmabt");
 var feed;
 if (y.offsetWidth < 850){
-    feed = "http://query.yahooapis.com/v1/public/yql/uhTrending/cokeTrending3?format=json&callback=YAHOO.one.uh.popularSearches&_maxage=1800&diagnostics=false&limit=1";
+    feed = "http://cssQuery.yahooapis.com/v1/public/yql/uhTrending/cokeTrending3?format=json&callback=YAHOO.one.uh.popularSearches&_maxage=1800&diagnostics=false&limit=1";
 }
 else {
-    feed = "http://query.yahooapis.com/v1/public/yql/uhTrending/cokeTrending2?format=json&callback=YAHOO.one.uh.popularSearches&_maxage=1800&diagnostics=false&limit=1";
+    feed = "http://cssQuery.yahooapis.com/v1/public/yql/uhTrending/cokeTrending2?format=json&callback=YAHOO.one.uh.popularSearches&_maxage=1800&diagnostics=false&limit=1";
 }
 var h = document.getElementsByTagName("head").item(0);
 var s = document.createElement("script");

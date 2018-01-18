@@ -57,13 +57,13 @@ import static org.jsoup.internal.Normalizer.lowerCase;
  * @see org.jsoup.Jsoup#connect(String)
  */
 public class HttpConnection implements Connection {
+
     public static final String CONTENT_ENCODING = "Content-Encoding";
     /**
      * Many users would get caught by not setting a user-agent and therefore getting different responses on their desktop
      * vs in jsoup, which would otherwise default to {@code Java}. So by default, use a desktop UA.
      */
-    public static final String DEFAULT_UA =
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36";
+    public static final String DEFAULT_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36";
     private static final String USER_AGENT = "User-Agent";
     private static final String CONTENT_TYPE = "Content-Type";
     private static final String MULTIPART_FORM_DATA = "multipart/form-data";

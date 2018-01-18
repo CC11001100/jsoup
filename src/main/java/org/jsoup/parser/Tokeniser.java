@@ -10,6 +10,7 @@ import java.util.Arrays;
  * Readers the input stream into tokens.
  */
 final class Tokeniser {
+
     static final char replacementChar = '\uFFFD'; // replaces null character
     private static final char[] notCharRefCharsSorted = new char[]{'\t', '\n', '\r', '\f', ' ', '<', '&'};
 

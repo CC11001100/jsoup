@@ -10,6 +10,7 @@ import java.util.Iterator;
  * A minimal String utility class. Designed for internal jsoup use only.
  */
 public final class StringUtil {
+
     // memoised padding up to 21
     static final String[] padding = {"", " ", "  ", "   ", "    ", "     ", "      ", "       ", "        ",
         "         ", "          ", "           ", "            ", "             ", "              ", "               ",
@@ -240,7 +241,6 @@ public final class StringUtil {
             sb.delete(0, sb.length());
         }
         return sb;
-
     }
 
     private static final int MaxCachedBuilderSize = 8 * 1024;
@@ -249,7 +249,6 @@ public final class StringUtil {
         protected StringBuilder initialValue() {
             return new StringBuilder(MaxCachedBuilderSize);
         }
-    };
-
+};
 
 }
