@@ -75,6 +75,7 @@ import java.util.IdentityHashMap;
  * @see Element#select(String)
  */
 public class Selector {
+
     // not instantiable
     private Selector() {}
 

@@ -4,20 +4,24 @@ package org.jsoup.helper;
  * Simple validation methods. Designed for jsoup internal use
  */
 public final class Validate {
-    
-    private Validate() {}
 
-    /**
-     * Validates that the object is not null
-     * @param obj object to test
-     */
-    public static void notNull(Object obj) {
-        if (obj == null)
-            throw new IllegalArgumentException("Object must not be null");
+    private Validate() {
     }
 
     /**
      * Validates that the object is not null
+     *
+     * @param obj object to test
+     */
+    public static void notNull(Object obj) {
+        if (obj == null) {
+            throw new IllegalArgumentException("Object must not be null");
+        }
+    }
+
+    /**
+     * Validates that the object is not null
+     *
      * @param obj object to test
      * @param msg message to output if validation fails
      */
@@ -28,6 +32,7 @@ public final class Validate {
 
     /**
      * Validates that the value is true
+     *
      * @param val object to test
      */
     public static void isTrue(boolean val) {
@@ -37,6 +42,7 @@ public final class Validate {
 
     /**
      * Validates that the value is true
+     *
      * @param val object to test
      * @param msg message to output if validation fails
      */
@@ -47,6 +53,7 @@ public final class Validate {
 
     /**
      * Validates that the value is false
+     *
      * @param val object to test
      */
     public static void isFalse(boolean val) {
@@ -56,6 +63,7 @@ public final class Validate {
 
     /**
      * Validates that the value is false
+     *
      * @param val object to test
      * @param msg message to output if validation fails
      */
@@ -66,6 +74,7 @@ public final class Validate {
 
     /**
      * Validates that the array contains no null elements
+     *
      * @param objects the array to test
      */
     public static void noNullElements(Object[] objects) {
@@ -74,8 +83,9 @@ public final class Validate {
 
     /**
      * Validates that the array contains no null elements
+     *
      * @param objects the array to test
-     * @param msg message to output if validation fails
+     * @param msg     message to output if validation fails
      */
     public static void noNullElements(Object[] objects, String msg) {
         for (Object obj : objects)
@@ -85,6 +95,7 @@ public final class Validate {
 
     /**
      * Validates that the string is not empty
+     *
      * @param string the string to test
      */
     public static void notEmpty(String string) {
@@ -94,8 +105,9 @@ public final class Validate {
 
     /**
      * Validates that the string is not empty
+     *
      * @param string the string to test
-     * @param msg message to output if validation fails
+     * @param msg    message to output if validation fails
      */
     public static void notEmpty(String string, String msg) {
         if (string == null || string.length() == 0)
@@ -103,8 +115,9 @@ public final class Validate {
     }
 
     /**
-     Cause a failure.
-     @param msg message to output.
+     * Cause a failure.
+     *
+     * @param msg message to output.
      */
     public static void fail(String msg) {
         throw new IllegalArgumentException(msg);

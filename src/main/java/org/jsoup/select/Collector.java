@@ -17,12 +17,13 @@ public class Collector {
     }
 
     /**
-     Build a list of elements, by visiting root and every descendant of root, and testing it against the evaluator.
-     @param eval Evaluator to test elements against
-     @param root root of tree to descend
-     @return list of matches; empty if none
+     * Build a list of elements, by visiting root and every descendant of root, and testing it against the evaluator.
+     *
+     * @param eval Evaluator to test elements against
+     * @param root root of tree to descend
+     * @return list of matches; empty if none
      */
-    public static Elements collect (Evaluator eval, Element root) {
+    public static Elements collect(Evaluator eval, Element root) {
         Elements elements = new Elements();
         NodeTraversor.traverse(new Accumulator(root, elements, eval), root);
         return elements;

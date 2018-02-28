@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
+ * 组合鉴别器，用于对多个鉴别器之间做逻辑运算，支持逻辑与、逻辑或
+ *
  * Base combining (and, or) evaluator.
  */
 abstract class CombiningEvaluator extends Evaluator {
@@ -25,10 +27,12 @@ abstract class CombiningEvaluator extends Evaluator {
         updateNumEvaluators();
     }
 
+    // 获取最右边的鉴别器
     Evaluator rightMostEvaluator() {
         return num > 0 ? evaluators.get(num - 1) : null;
     }
-    
+
+    // 重置最右边的鉴别器
     void replaceRightMostEvaluator(Evaluator replacement) {
         evaluators.set(num - 1, replacement);
     }
@@ -66,6 +70,7 @@ abstract class CombiningEvaluator extends Evaluator {
     static final class Or extends CombiningEvaluator {
         /**
          * Create a new Or evaluator. The initial evaluators are ANDed together and used as the first clause of the OR.
+         *
          * @param evaluators initial OR clause (these are wrapped into an AND evaluator).
          */
         Or(Collection<Evaluator> evaluators) {
@@ -77,7 +82,9 @@ abstract class CombiningEvaluator extends Evaluator {
             updateNumEvaluators();
         }
 
-        Or(Evaluator... evaluators) { this(Arrays.asList(evaluators)); }
+        Or(Evaluator... evaluators) {
+            this(Arrays.asList(evaluators));
+        }
 
         Or() {
             super();

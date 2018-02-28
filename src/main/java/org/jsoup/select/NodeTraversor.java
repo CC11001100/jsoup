@@ -12,6 +12,7 @@ import org.jsoup.select.NodeFilter.FilterResult;
  * </p>
  */
 public class NodeTraversor {
+
     private NodeVisitor visitor;
 
     /**
@@ -33,6 +34,7 @@ public class NodeTraversor {
     }
 
     /**
+     *
      * Start a depth-first traverse of the root and all of its descendants.
      * @param visitor Node visitor.
      * @param root the root node point to traverse.

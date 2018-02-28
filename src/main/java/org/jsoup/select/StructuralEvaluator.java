@@ -9,6 +9,7 @@ abstract class StructuralEvaluator extends Evaluator {
 
     Evaluator evaluator;
 
+    // 判断当前元素是否是根元素
     static class Root extends Evaluator {
         public boolean matches(Element root, Element element) {
             return root == element;

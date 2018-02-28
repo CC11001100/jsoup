@@ -8,6 +8,7 @@ import java.io.IOException;
  * A Character Data node, to support CDATA sections.
  */
 public class CDataNode extends TextNode {
+
     public CDataNode(String text) {
         super(text);
     }
@@ -41,4 +42,5 @@ public class CDataNode extends TextNode {
             throw new UncheckedIOException(e);
         }
     }
+
 }

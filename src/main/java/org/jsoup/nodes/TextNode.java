@@ -6,48 +6,51 @@ import org.jsoup.helper.Validate;
 import java.io.IOException;
 
 /**
- A text node.
-
- @author Jonathan Hedley, jonathan@hedley.net */
+ * A text node.
+ *
+ * @author Jonathan Hedley, jonathan@hedley.net
+ */
 public class TextNode extends LeafNode {
 
     /**
-     Create a new TextNode representing the supplied (unencoded) text).
-
-     @param text raw text
-     @see #createFromEncoded(String)
+     * Create a new TextNode representing the supplied (unencoded) text).
+     *
+     * @param text raw text
+     * @see #createFromEncoded(String)
      */
     public TextNode(String text) {
         value = text;
     }
 
     /**
-     Create a new TextNode representing the supplied (unencoded) text).
-
-     @param text raw text
-     @param baseUri base uri - ignored for this node type
-     @see #createFromEncoded(String, String)
-     @deprecated use {@link TextNode#TextNode(String)}
+     * Create a new TextNode representing the supplied (unencoded) text).
+     *
+     * @param text    raw text
+     * @param baseUri base uri - ignored for this node type
+     * @see #createFromEncoded(String, String)
+     * @deprecated use {@link TextNode#TextNode(String)}
      */
     public TextNode(String text, String baseUri) {
         this(text);
     }
 
-	public String nodeName() {
+    public String nodeName() {
         return "#text";
     }
-    
+
     /**
      * Get the text content of this text node.
+     *
      * @return Unencoded, normalised text.
      * @see TextNode#getWholeText()
      */
     public String text() {
         return StringUtil.normaliseWhitespace(getWholeText());
     }
-    
+
     /**
      * Set the text content of this text node.
+     *
      * @param text unencoded text
      * @return this, for chaining
      */
@@ -57,24 +60,28 @@ public class TextNode extends LeafNode {
     }
 
     /**
-     Get the (unencoded) text of this text node, including any newlines and spaces present in the original.
-     @return text
+     * Get the (unencoded) text of this text node, including any newlines and spaces present in the original.
+     *
+     * @return text
      */
     public String getWholeText() {
         return coreValue();
     }
 
     /**
-     Test if this text node is blank -- that is, empty or only whitespace (including newlines).
-     @return true if this document is empty or only whitespace, false if it contains any text content.
+     * Test if this text node is blank -- that is, empty or only whitespace (including newlines).
+     *
+     * @return true if this document is empty or only whitespace, false if it contains any text content.
      */
     public boolean isBlank() {
         return StringUtil.isBlank(coreValue());
     }
 
     /**
+     * 把当前的文本节点从指定点一劈两半，前半部分还归它，后半部分给劈出来的文本节点，这个新的文本节点是此节点的兄弟节点
      * Split this text node into two nodes at the specified string offset. After splitting, this node will contain the
      * original text up to the offset, and will have a new text node sibling containing the text after the offset.
+     *
      * @param offset string offset point to split node at.
      * @return the newly created text node containing the text after the offset.
      */
@@ -87,32 +94,38 @@ public class TextNode extends LeafNode {
         String tail = text.substring(offset);
         text(head);
         TextNode tailNode = new TextNode(tail);
-        if (parent() != null)
-            parent().addChildren(siblingIndex()+1, tailNode);
+        if (parent() != null) {
+            parent().addChildren(siblingIndex() + 1, tailNode);
+        }
 
         return tailNode;
     }
 
-	void outerHtmlHead(Appendable accum, int depth, Document.OutputSettings out) throws IOException {
-        if (out.prettyPrint() && ((siblingIndex() == 0 && parentNode instanceof Element && ((Element) parentNode).tag().formatAsBlock() && !isBlank()) || (out.outline() && siblingNodes().size()>0 && !isBlank()) ))
+    void outerHtmlHead(Appendable accum, int depth, Document.OutputSettings out) throws IOException {
+        // 缩进
+        if (out.prettyPrint() && ((siblingIndex() == 0 && parentNode instanceof Element && ((Element) parentNode).tag().formatAsBlock() && !isBlank()) || (out.outline() && siblingNodes().size() > 0 && !isBlank()))) {
             indent(accum, depth, out);
+        }
 
-        boolean normaliseWhite = out.prettyPrint() && parent() instanceof Element
-                && !Element.preserveWhitespace(parent());
+        boolean normaliseWhite = out.prettyPrint() && parent() instanceof Element && !Element.preserveWhitespace(parent());
         Entities.escape(accum, coreValue(), out, false, normaliseWhite, false);
     }
 
-	void outerHtmlTail(Appendable accum, int depth, Document.OutputSettings out) {}
+    void outerHtmlTail(Appendable accum, int depth, Document.OutputSettings out) {
+    }
 
     @Override
     public String toString() {
         return outerHtml();
     }
 
+    /* ---------------- static method under --------------------- */
+
     /**
      * Create a new TextNode from HTML encoded (aka escaped) data.
+     *
      * @param encodedText Text containing encoded HTML (e.g. &amp;lt;)
-     * @param baseUri Base uri
+     * @param baseUri     Base uri
      * @return TextNode containing unencoded data (e.g. &lt;)
      * @deprecated use {@link TextNode#createFromEncoded(String)} instead, as LeafNodes don't carry base URIs.
      */
@@ -123,6 +136,7 @@ public class TextNode extends LeafNode {
 
     /**
      * Create a new TextNode from HTML encoded (aka escaped) data.
+     *
      * @param encodedText Text containing encoded HTML (e.g. &amp;lt;)
      * @return TextNode containing unencoded data (e.g. &lt;)
      */
@@ -143,6 +157,5 @@ public class TextNode extends LeafNode {
     static boolean lastCharIsWhitespace(StringBuilder sb) {
         return sb.length() != 0 && sb.charAt(sb.length() - 1) == ' ';
     }
-
 
 }

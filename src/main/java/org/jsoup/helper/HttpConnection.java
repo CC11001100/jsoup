@@ -539,9 +539,9 @@ public class HttpConnection implements Connection {
     public static class Request extends HttpConnection.Base<Connection.Request> implements Connection.Request {
         private Proxy proxy; // nullable
         private int timeoutMilliseconds;
-        private int maxBodySizeBytes;
-        private boolean followRedirects;
-        private Collection<Connection.KeyVal> data;
+        private int maxBodySizeBytes; // 最多从响应流中读取多少字节
+        private boolean followRedirects; // 是否跟随重定向，遇到一些反爬可能会遭遇无限重定向
+        private Collection<Connection.KeyVal> data; // 请求载荷数据
         private String body = null;
         private boolean ignoreHttpErrors = false;
         private boolean ignoreContentType = false;

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ *
  * HTML Tag capabilities.
  *
  * @author Jonathan Hedley, jonathan@hedley.net
