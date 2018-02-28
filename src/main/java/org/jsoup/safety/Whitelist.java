@@ -20,7 +20,7 @@ import static org.jsoup.internal.Normalizer.lowerCase;
 
 /**
  * 白名单定义了一部分HTML标签和属性作为白名单，不在白名单中的元素将会被认为不合法而被过滤掉
- *
+ * <p>
  * Whitelists define what HTML (elements and attributes) to allow through the cleaner. Everything else is removed.
  * <p>
  * Start with one of the defaults:
@@ -73,6 +73,8 @@ public class Whitelist {
 	private boolean preserveRelativeLinks; // option to preserve relative links
 
 	/**
+	 * 只允许文本节点的白名单
+	 *
 	 * This whitelist allows only text nodes: all HTML will be stripped.
 	 *
 	 * @return whitelist
@@ -82,6 +84,7 @@ public class Whitelist {
 	}
 
 	/**
+	 * 这个白名单只允许简单的文本节点，其它的元素类型会被干掉
 	 * This whitelist allows only simple text formatting: <code>b, em, i, strong, u</code>. All other HTML (tags and
 	 * attributes) will be removed.
 	 *
@@ -630,12 +633,15 @@ public class Whitelist {
 		public boolean equals(Object obj) {
 			if (this == obj) return true;
 			if (obj == null) return false;
+
 			if (getClass() != obj.getClass()) return false;
 			TypedValue other = (TypedValue) obj;
+
 			if (value == null) {
-				if (other.value != null) return false;
-			} else if (!value.equals(other.value)) return false;
-			return true;
+				return other.value == null;
+			} else {
+				return value.equals(other.value);
+			}
 		}
 
 		@Override
