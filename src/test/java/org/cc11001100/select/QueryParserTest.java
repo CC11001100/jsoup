@@ -17,4 +17,11 @@ public class QueryParserTest {
 
     }
 
+    @Test
+    public void test_002(){
+
+        System.out.println("all ok");
+
+    }
+
 }
